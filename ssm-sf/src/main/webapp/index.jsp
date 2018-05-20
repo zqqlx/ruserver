@@ -3,6 +3,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<jsp:forward page="/emps"></jsp:forward>
+<%
+	String contextPath = request.getContextPath();
+	String basePath = request.getScheme()+"://"+request.getServerName()+":"request.getServerPort()+contextPath+"/";
+%>
 <title>用户信息显示</title>
    <!-- 引入JQuery -->
    <script type="text/javascript" src="./static/jquery-easyui-1.5.4.5/jquery.min.js"></script>
@@ -17,15 +22,15 @@
 </head>
 <body> 
     <table id="dg" title="My Users" class="easyui-datagrid" style="width:1000px;height:700px"
-            url="get_users.php"
+            url="get_users.action"
             toolbar="#toolbar" pagination="true"
             rownumbers="true" fitColumns="true" singleSelect="true">
         <thead>
             <tr>
-                <th field="firstname" width="50">First Name</th>
-                <th field="lastname" width="50">Last Name</th>
-                <th field="phone" width="50">Phone</th>
-                <th field="email" width="50">Email</th>
+                <th field="firstname" width="50">姓</th>
+                <th field="lastname" width="50">名</th>
+                <th field="phone" width="50">手机</th>
+                <th field="email" width="50">邮箱</th>
             </tr>
         </thead>
     </table>
@@ -62,14 +67,14 @@
         function newUser(){
             $('#dlg').dialog('open').dialog('center').dialog('setTitle','New User');
             $('#fm').form('clear');
-            url = 'save_user.php';
+            url = 'save_user.action';
         }
         function editUser(){
             var row = $('#dg').datagrid('getSelected');
             if (row){
                 $('#dlg').dialog('open').dialog('center').dialog('setTitle','Edit User');
                 $('#fm').form('load',row);
-                url = 'update_user.php?id='+row.id;
+                url = 'update_user.action?id='+row.id;
             }
         }
         function saveUser(){

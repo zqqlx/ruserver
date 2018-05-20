@@ -1,5 +1,7 @@
 package com.sf;
 
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,6 +18,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.github.pagehelper.PageInfo;
+import com.sf.bean.Employee;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
@@ -30,12 +33,19 @@ public class SpirngTest {
 	}
 	@Test
 	public void testPage() throws Exception{
-		MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/emps").param("pn", "1")).andReturn();
+		MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/emps").param("pn", "6")).andReturn();
 		MockHttpServletRequest request = result.getRequest();
 		PageInfo pageInfo = (PageInfo) request.getAttribute("pageInfo");
 		System.out.println("当前页： "+pageInfo.getPageNum());
 		System.out.println("总共页数: "+pageInfo.getTotal());
+		System.out.println("总共页数: "+pageInfo.getPages());
+		int[]num = pageInfo.getNavigatepageNums();
+		for(int i : num){
+			System.out.println(i);
+		}
+		List<Employee> list = pageInfo.getList();
+		for(Employee employee : list){
+			System.out.println(employee.getEmpName());
+		}
 	}
-	
-	
 }
