@@ -18,7 +18,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.github.pagehelper.PageInfo;
-import com.sf.bean.Employee;
+
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
@@ -43,9 +43,9 @@ public class SpirngTest {
 		for(int i : num){
 			System.out.println(i);
 		}
-		List<Employee> list = pageInfo.getList();
-		for(Employee employee : list){
-			System.out.println(employee.getEmpName());
-		}
+//		List<Employee> list = pageInfo.getList();
+//		for(Employee employee : list){
+//			System.out.println(employee.getEmpName());
+//		}
 	}
 }

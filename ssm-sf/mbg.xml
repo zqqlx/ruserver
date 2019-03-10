@@ -30,10 +30,12 @@
       	<property name="enableSubPackages" value="true" />
     </javaClientGenerator>
 <!--指定的表 -->
-    <table  tableName="tb1_emp" domainObjectName="Employee" >
-    </table>
-    
-    <table  tableName="tb1_dept" domainObjectName="Department" >
+    <table  tableName="user_order" domainObjectName="User"  enableCountByExample="false"
+            enableUpdateByExample="false"
+            enableDeleteByExample="false"
+            enableSelectByExample="false"
+            selectByExampleQueryId="false" >
+    	
     </table>
 
   </context>

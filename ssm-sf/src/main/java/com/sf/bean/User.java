@@ -1,44 +1,43 @@
 package com.sf.bean;
 
-import java.io.Serializable;
+public class User {
+    private Integer userId;
 
-public class User implements Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+    private String loginname;
 
-	private String loginname;
-	
-	private String password;
-	
-	private String username;
+    private String password;
 
-	public String getLoginname() {
-		return loginname;
-	}
+    private String username;
 
-	public void setLoginname(String loginname) {
-		this.loginname = loginname;
-	}
+    public Integer getUserId() {
+        return userId;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public String getLoginname() {
+        return loginname;
+    }
 
-	public String getUsername() {
-		return username;
-	}
+    public void setLoginname(String loginname) {
+        this.loginname = loginname == null ? null : loginname.trim();
+    }
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
-	
-	public String toString(){
-		return "loginname: " + loginname+"::"+"username: "+username+"::"+"password: "+password;
-	}
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password == null ? null : password.trim();
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username == null ? null : username.trim();
+    }
 }

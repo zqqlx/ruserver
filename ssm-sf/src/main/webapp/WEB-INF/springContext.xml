@@ -17,7 +17,22 @@
         http://www.springframework.org/schema/tx/spring-tx-4.2.xsd ">  
 <!--SpringMVC的配置文件,包括网站逻辑有关的文件 -->
 	<context:component-scan base-package="com.sf.controller"/>
- 	<!-- 配置视图解析器-->
+	<!--两个标准配置 -->
+	<mvc:annotation-driven/>
+	<!--讲springmvc不能处理的请求交给Tomcat -->
+	<mvc:default-servlet-handler/>
+	<bean id = "messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="message"/>
+	</bean>
+	<mvc:interceptors>
+		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"/>
+	</mvc:interceptors>
+	<!-- 基于HttpSession实现国际化-->
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver"/>
+ 	
+	<!-- 基于CookieLocaleResolver实现国际化-->
+	<!--<bean id = "localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver"/>-->
+	<!-- 配置视图解析器-->
  	<bean id ="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">  
    		<property name="prefix"> 
    			<value>/WEB-INF/views/</value>
@@ -25,11 +40,5 @@
    		<property name="suffix"> 
    			<value>.jsp</value>
    		</property> 
-	</bean>
-	<!--两个标准配置 -->
-	<mvc:annotation-driven/>
-	
-	<!--讲springmvc不能处理的请求交给Tomcat -->
-	<mvc:default-servlet-handler/>
-	
+	</bean> 
 	</beans>

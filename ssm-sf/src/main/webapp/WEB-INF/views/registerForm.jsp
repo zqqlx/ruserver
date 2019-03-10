@@ -23,7 +23,7 @@
 				<td><input type="text" id="username" name="username"></td>
 			</tr>
 			<tr>
-				<td><input type="submit" type="submit" value="注册"></td>
+				<td><input id = "submit" type="submit"  value="注册"></td>
 			</tr>
 		</table>
 		</form>
